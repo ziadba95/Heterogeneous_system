@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BootstrapSite2.Tier2.serviceOffer>
+
+@{
+    ViewBag.Title = "MyOffers";
+}
+
+
+<h2>My Service Offers</h2>
+
+
+@using (Html.BeginForm("MyPostOffers", "UserProfile"))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <th>
+               Job Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+               Category
+            </th>
+
+
+            <th>
+              Address
+            </th>
+            <th>
+              Booking Time
+            </th>
+
+            <th>
+              Salary
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobCategory)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookingTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditOffers", new { id = item.id }) |
+                @Html.ActionLink("Applicants", "Applicants", new { id = item.id }) |
+                @Html.ActionLink("Delete", "DeleteOffer", new { id = item.id })
+            </td>
+        </tr>
+        }
+
+    </table>
+}
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

@@ -1,0 +1,98 @@
+CREATE SCHEMA justwork; 
+ set search_path = 'justwork';
+create domain d_email varchar(50) constraint c_email check (value like '%@%.%');
+
+CREATE TABLE city (
+	name varchar(50) primary key
+);
+INSERT INTO CITY VALUES('Copenhagen');
+INSERT INTO CITY VALUES('Frederiksberg');
+INSERT INTO CITY VALUES('Glostrup');
+INSERT INTO CITY VALUES('Hilleroed');
+INSERT INTO CITY VALUES('Roskilde');
+INSERT INTO CITY VALUES('Soroe');
+INSERT INTO CITY VALUES('Nykoebing');
+INSERT INTO CITY VALUES('Odense');
+INSERT INTO CITY VALUES('Aabenraa');
+INSERT INTO CITY VALUES('Ribe');
+INSERT INTO CITY VALUES('Vejle');
+INSERT INTO CITY VALUES('Ringkoebing');
+INSERT INTO CITY VALUES('Viborg');
+INSERT INTO CITY VALUES('Aalborg');
+INSERT INTO CITY VALUES('Aahus');
+INSERT INTO CITY VALUES('Roenne');
+
+
+CREATE TABLE "user"(
+
+fname varchar(50),
+lname varchar(50),	
+phone bigint,
+email d_email,
+CPR bigint,  
+city varchar(50),
+password varchar (50),
+primary key (CPR),
+foreign key (city) references city(name)
+	);
+
+
+create table justwork.CategoryId(
+name varchar(50) primary key);
+INSERT INTO justwork.CategoryId VALUES('Cleaning');
+INSERT INTO justwork.CategoryId VALUES('Cooking');
+INSERT INTO justwork.CategoryId VALUES('Shopping');
+INSERT INTO justwork.CategoryId VALUES('Delivery and Transportation');
+INSERT INTO justwork.CategoryId VALUES('Moving');
+INSERT INTO justwork.CategoryId VALUES('Children');
+INSERT INTO justwork.CategoryId VALUES('Pets');
+INSERT INTO justwork.CategoryId VALUES('Gardening');
+INSERT INTO justwork.CategoryId VALUES('Repairing');
+INSERT INTO justwork.CategoryId VALUES('Teaching');
+INSERT INTO justwork.CategoryId VALUES('Other');
+
+
+create table justwork.ServiceRequests
+
+(postID serial primary key,
+Postedtime timestamp default now(),
+ title varchar(50),
+ category varchar(50),
+Description varchar(300),
+ whoPosted bigint,
+ foreign key (whoPosted) references justwork."user"(CPR),
+ Foreign key (category) references justwork.CategoryId(name)
+ );
+ 
+ create table justwork.ServiceOffers
+
+(postID serial primary key,
+Postedtime timestamp default now(),
+ title varchar(50),
+ category varchar(50),
+Description varchar(300),
+ bookingTime TimeStamp,
+ address varchar(50),
+ salary int,
+ whoPosted bigint,
+ foreign key (whoPosted) references justwork."user"(CPR),
+Foreign key (category) references justwork.CategoryId(name)
+ );
+ 
+ create table justwork.ServiceOffersApplicants(
+ postID int,
+ applicant bigint,
+foreign key (postID) references justwork.ServiceOffers(postID)  on delete cascade,
+	 foreign key (applicant) references justwork."user"(CPR) on delete cascade
+ );
+
+
+
+	create table justwork.Profiles
+
+(userID bigint primary key,
+Description varchar(300),
+ foreign key (userID) references justwork."user"(CPR)
+
+ );
+ 

@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws/" targetNamespace="http://ws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EmptyListException" type="tns:EmptyListException" />
+  <xs:element name="ExpiredSession" type="tns:ExpiredSession" />
+  <xs:element name="InvalidFormException" type="tns:InvalidFormException" />
+  <xs:element name="NotBoundException" type="tns:NotBoundException" />
+  <xs:element name="SQLException" type="tns:SQLException" />
+  <xs:element name="UserNotFound" type="tns:UserNotFound" />
+  <xs:element name="addApplicant" type="tns:addApplicant" />
+  <xs:element name="addApplicantResponse" type="tns:addApplicantResponse" />
+  <xs:element name="createProfile" type="tns:createProfile" />
+  <xs:element name="createProfileResponse" type="tns:createProfileResponse" />
+  <xs:element name="deleteApplicant" type="tns:deleteApplicant" />
+  <xs:element name="deleteApplicantResponse" type="tns:deleteApplicantResponse" />
+  <xs:element name="deleteOffer" type="tns:deleteOffer" />
+  <xs:element name="deleteOfferResponse" type="tns:deleteOfferResponse" />
+  <xs:element name="deleteRequest" type="tns:deleteRequest" />
+  <xs:element name="deleteRequestResponse" type="tns:deleteRequestResponse" />
+  <xs:element name="editProfile" type="tns:editProfile" />
+  <xs:element name="editProfileResponse" type="tns:editProfileResponse" />
+  <xs:element name="getApplicants" type="tns:getApplicants" />
+  <xs:element name="getApplicantsResponse" type="tns:getApplicantsResponse" />
+  <xs:element name="getCategories" type="tns:getCategories" />
+  <xs:element name="getCategoriesResponse" type="tns:getCategoriesResponse" />
+  <xs:element name="getCounties" type="tns:getCounties" />
+  <xs:element name="getCountiesResponse" type="tns:getCountiesResponse" />
+  <xs:element name="getMyServiceOffers" type="tns:getMyServiceOffers" />
+  <xs:element name="getMyServiceOffersResponse" type="tns:getMyServiceOffersResponse" />
+  <xs:element name="getMyServiceRequests" type="tns:getMyServiceRequests" />
+  <xs:element name="getMyServiceRequestsResponse" type="tns:getMyServiceRequestsResponse" />
+  <xs:element name="getOffersIAppliedFor" type="tns:getOffersIAppliedFor" />
+  <xs:element name="getOffersIAppliedForResponse" type="tns:getOffersIAppliedForResponse" />
+  <xs:element name="getProfile" type="tns:getProfile" />
+  <xs:element name="getProfileResponse" type="tns:getProfileResponse" />
+  <xs:element name="getServiceOffer" type="tns:getServiceOffer" />
+  <xs:element name="getServiceOfferResponse" type="tns:getServiceOfferResponse" />
+  <xs:element name="getServiceOffersNF" type="tns:getServiceOffersNF" />
+  <xs:element name="getServiceOffersNFResponse" type="tns:getServiceOffersNFResponse" />
+  <xs:element name="getServiceRequest" type="tns:getServiceRequest" />
+  <xs:element name="getServiceRequestResponse" type="tns:getServiceRequestResponse" />
+  <xs:element name="getServiceRequestsNF" type="tns:getServiceRequestsNF" />
+  <xs:element name="getServiceRequestsNFResponse" type="tns:getServiceRequestsNFResponse" />
+  <xs:element name="logIn" type="tns:logIn" />
+  <xs:element name="logInResponse" type="tns:logInResponse" />
+  <xs:element name="postOffer" type="tns:postOffer" />
+  <xs:element name="postOfferResponse" type="tns:postOfferResponse" />
+  <xs:element name="postRequest" type="tns:postRequest" />
+  <xs:element name="postRequestResponse" type="tns:postRequestResponse" />
+  <xs:element name="signUp" type="tns:signUp" />
+  <xs:element name="signUpResponse" type="tns:signUpResponse" />
+  <xs:complexType name="getProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CPR" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProfileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:user" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="city" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+      <xs:element minOccurs="0" name="cPR" type="xs:string" />
+      <xs:element minOccurs="0" name="fName" type="xs:string" />
+      <xs:element minOccurs="0" name="lName" type="xs:string" />
+      <xs:element minOccurs="0" name="vPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SQLException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SQLState" type="xs:string" />
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sqlException">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nextException" type="tns:sqlException" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="exception">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:throwable">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="throwable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="stackTrace" nillable="true" type="tns:stackTraceElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="stackTraceElement" final="extension restriction">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ExpiredSession">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceRequestsNF">
+    <xs:sequence>
+      <xs:element name="cpr" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceRequestsNFResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:serviceRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:post">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="post" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="jobCategory" type="xs:string" />
+      <xs:element minOccurs="0" name="jobTitle" type="xs:string" />
+      <xs:element minOccurs="0" name="whoPosted" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EmptyListException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteOffer">
+    <xs:sequence>
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteOfferResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="logIn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cpr" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="logInResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserNotFound">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signUp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fName" type="xs:string" />
+      <xs:element minOccurs="0" name="lName" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" name="vPassword" type="xs:string" />
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+      <xs:element minOccurs="0" name="cpr" type="xs:string" />
+      <xs:element minOccurs="0" name="city" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signUpResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvalidFormException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NotBoundException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOffersIAppliedFor">
+    <xs:sequence>
+      <xs:element name="CPR" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOffersIAppliedForResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:serviceOffer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceOffer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:post">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="applicants" nillable="true" type="tns:applicant" />
+          <xs:element minOccurs="0" name="bookingTime" type="xs:dateTime" />
+          <xs:element name="salary" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="applicant">
+    <xs:sequence>
+      <xs:element name="cpr" type="xs:long" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMyServiceRequests">
+    <xs:sequence>
+      <xs:element name="CPR" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMyServiceRequestsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:serviceRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceOffersNF">
+    <xs:sequence>
+      <xs:element name="cpr" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceOffersNFResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:serviceOffer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postOffer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="category" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="cpr" type="xs:string" />
+      <xs:element minOccurs="0" name="address" type="xs:string" />
+      <xs:element minOccurs="0" name="bookingTime" type="xs:string" />
+      <xs:element minOccurs="0" name="salary" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postOfferResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CPR" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="createProfileResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="deleteApplicant">
+    <xs:sequence>
+      <xs:element name="CPR" type="xs:long" />
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteApplicantResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="postRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="title" type="xs:string" />
+      <xs:element minOccurs="0" name="category" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="cpr" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="postRequestResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceOffer">
+    <xs:sequence>
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceOfferResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceOffer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteRequest">
+    <xs:sequence>
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="deleteRequestResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getApplicants">
+    <xs:sequence>
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getApplicantsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:applicant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCounties">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getCountiesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="editProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cpr" type="xs:string" />
+      <xs:element minOccurs="0" name="description" type="xs:string" />
+      <xs:element minOccurs="0" name="county" type="xs:string" />
+      <xs:element minOccurs="0" name="phone" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+      <xs:element minOccurs="0" name="vPassword" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="editProfileResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="addApplicant">
+    <xs:sequence>
+      <xs:element name="CPR" type="xs:long" />
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addApplicantResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getServiceRequest">
+    <xs:sequence>
+      <xs:element name="PostID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getServiceRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:serviceRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getCategories">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="getCategoriesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMyServiceOffers">
+    <xs:sequence>
+      <xs:element name="CPR" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getMyServiceOffersResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:serviceOffer" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

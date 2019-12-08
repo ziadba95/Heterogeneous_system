@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BootstrapSite2.Tier2.serviceRequest>
+
+@{
+    ViewBag.Title = "MyPostRequests";
+}
+
+<h2>My Service Requests</h2>
+
+
+@using (Html.BeginForm("MyPostRequest", "UserProfile"))
+{
+    @Html.AntiForgeryToken()
+
+    <table class="table">
+        <tr>
+            <th>
+              Title
+            </th>
+            <th>
+            Description
+            </th>
+            <th>
+               Category
+            </th>
+          
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.jobCategory)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "EditRequests", new { id = item.id }) |
+
+                @Html.ActionLink("Delete", "DeleteRequest", new { id = item.id })
+            </td>
+        </tr>
+        }
+
+    </table>
+}
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

@@ -1,0 +1,81 @@
+﻿@model  List<BootstrapSite2.Tier2.serviceOffer>
+
+@{
+    ViewBag.Title = "Applications";
+}
+<h2>My Service Applications</h2>
+
+
+@using (Html.BeginForm("Applications", "UserProfile"))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Description
+            </th>
+
+
+            <th>
+                Posted By
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Booking Time
+            </th>
+
+
+            <th>
+                salary
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.whoPosted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bookingTime)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.salary)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Delete", "DeleteApplication", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

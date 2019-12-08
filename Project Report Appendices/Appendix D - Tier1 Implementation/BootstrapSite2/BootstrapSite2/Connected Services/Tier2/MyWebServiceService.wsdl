@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="MyWebServiceService" targetNamespace="http://ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://10.152.218.130:8080/JaxWsExample/service?xsd=1" namespace="http://ws/" />
+    </xsd:schema>
+  </types>
+  <message name="signUp">
+    <part name="parameters" element="tns:signUp" />
+  </message>
+  <message name="signUpResponse">
+    <part name="parameters" element="tns:signUpResponse" />
+  </message>
+  <message name="InvalidFormException">
+    <part name="fault" element="tns:InvalidFormException" />
+  </message>
+  <message name="SQLException">
+    <part name="fault" element="tns:SQLException" />
+  </message>
+  <message name="NotBoundException">
+    <part name="fault" element="tns:NotBoundException" />
+  </message>
+  <message name="logIn">
+    <part name="parameters" element="tns:logIn" />
+  </message>
+  <message name="logInResponse">
+    <part name="parameters" element="tns:logInResponse" />
+  </message>
+  <message name="UserNotFound">
+    <part name="fault" element="tns:UserNotFound" />
+  </message>
+  <message name="deleteOffer">
+    <part name="parameters" element="tns:deleteOffer" />
+  </message>
+  <message name="deleteOfferResponse">
+    <part name="parameters" element="tns:deleteOfferResponse" />
+  </message>
+  <message name="addApplicant">
+    <part name="parameters" element="tns:addApplicant" />
+  </message>
+  <message name="addApplicantResponse">
+    <part name="parameters" element="tns:addApplicantResponse" />
+  </message>
+  <message name="editProfile">
+    <part name="parameters" element="tns:editProfile" />
+  </message>
+  <message name="editProfileResponse">
+    <part name="parameters" element="tns:editProfileResponse" />
+  </message>
+  <message name="ExpiredSession">
+    <part name="fault" element="tns:ExpiredSession" />
+  </message>
+  <message name="createProfile">
+    <part name="parameters" element="tns:createProfile" />
+  </message>
+  <message name="createProfileResponse">
+    <part name="parameters" element="tns:createProfileResponse" />
+  </message>
+  <message name="getMyServiceOffers">
+    <part name="parameters" element="tns:getMyServiceOffers" />
+  </message>
+  <message name="getMyServiceOffersResponse">
+    <part name="parameters" element="tns:getMyServiceOffersResponse" />
+  </message>
+  <message name="EmptyListException">
+    <part name="fault" element="tns:EmptyListException" />
+  </message>
+  <message name="getServiceOffer">
+    <part name="parameters" element="tns:getServiceOffer" />
+  </message>
+  <message name="getServiceOfferResponse">
+    <part name="parameters" element="tns:getServiceOfferResponse" />
+  </message>
+  <message name="getCounties">
+    <part name="parameters" element="tns:getCounties" />
+  </message>
+  <message name="getCountiesResponse">
+    <part name="parameters" element="tns:getCountiesResponse" />
+  </message>
+  <message name="getServiceRequest">
+    <part name="parameters" element="tns:getServiceRequest" />
+  </message>
+  <message name="getServiceRequestResponse">
+    <part name="parameters" element="tns:getServiceRequestResponse" />
+  </message>
+  <message name="deleteRequest">
+    <part name="parameters" element="tns:deleteRequest" />
+  </message>
+  <message name="deleteRequestResponse">
+    <part name="parameters" element="tns:deleteRequestResponse" />
+  </message>
+  <message name="getServiceOffersNF">
+    <part name="parameters" element="tns:getServiceOffersNF" />
+  </message>
+  <message name="getServiceOffersNFResponse">
+    <part name="parameters" element="tns:getServiceOffersNFResponse" />
+  </message>
+  <message name="postOffer">
+    <part name="parameters" element="tns:postOffer" />
+  </message>
+  <message name="postOfferResponse">
+    <part name="parameters" element="tns:postOfferResponse" />
+  </message>
+  <message name="postRequest">
+    <part name="parameters" element="tns:postRequest" />
+  </message>
+  <message name="postRequestResponse">
+    <part name="parameters" element="tns:postRequestResponse" />
+  </message>
+  <message name="deleteApplicant">
+    <part name="parameters" element="tns:deleteApplicant" />
+  </message>
+  <message name="deleteApplicantResponse">
+    <part name="parameters" element="tns:deleteApplicantResponse" />
+  </message>
+  <message name="getProfile">
+    <part name="parameters" element="tns:getProfile" />
+  </message>
+  <message name="getProfileResponse">
+    <part name="parameters" element="tns:getProfileResponse" />
+  </message>
+  <message name="getCategories">
+    <part name="parameters" element="tns:getCategories" />
+  </message>
+  <message name="getCategoriesResponse">
+    <part name="parameters" element="tns:getCategoriesResponse" />
+  </message>
+  <message name="getApplicants">
+    <part name="parameters" element="tns:getApplicants" />
+  </message>
+  <message name="getApplicantsResponse">
+    <part name="parameters" element="tns:getApplicantsResponse" />
+  </message>
+  <message name="getServiceRequestsNF">
+    <part name="parameters" element="tns:getServiceRequestsNF" />
+  </message>
+  <message name="getServiceRequestsNFResponse">
+    <part name="parameters" element="tns:getServiceRequestsNFResponse" />
+  </message>
+  <message name="getOffersIAppliedFor">
+    <part name="parameters" element="tns:getOffersIAppliedFor" />
+  </message>
+  <message name="getOffersIAppliedForResponse">
+    <part name="parameters" element="tns:getOffersIAppliedForResponse" />
+  </message>
+  <message name="getMyServiceRequests">
+    <part name="parameters" element="tns:getMyServiceRequests" />
+  </message>
+  <message name="getMyServiceRequestsResponse">
+    <part name="parameters" element="tns:getMyServiceRequestsResponse" />
+  </message>
+  <portType name="IWebservice">
+    <operation name="signUp">
+      <input wsam:Action="http://ws/IWebservice/signUpRequest" message="tns:signUp" />
+      <output wsam:Action="http://ws/IWebservice/signUpResponse" message="tns:signUpResponse" />
+      <fault wsam:Action="http://ws/IWebservice/signUp/Fault/InvalidFormException" name="InvalidFormException" message="tns:InvalidFormException" />
+      <fault wsam:Action="http://ws/IWebservice/signUp/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/signUp/Fault/NotBoundException" name="NotBoundException" message="tns:NotBoundException" />
+    </operation>
+    <operation name="logIn">
+      <input wsam:Action="http://ws/IWebservice/logInRequest" message="tns:logIn" />
+      <output wsam:Action="http://ws/IWebservice/logInResponse" message="tns:logInResponse" />
+      <fault wsam:Action="http://ws/IWebservice/logIn/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/logIn/Fault/UserNotFound" name="UserNotFound" message="tns:UserNotFound" />
+    </operation>
+    <operation name="deleteOffer">
+      <input wsam:Action="http://ws/IWebservice/deleteOfferRequest" message="tns:deleteOffer" />
+      <output wsam:Action="http://ws/IWebservice/deleteOfferResponse" message="tns:deleteOfferResponse" />
+      <fault wsam:Action="http://ws/IWebservice/deleteOffer/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="addApplicant">
+      <input wsam:Action="http://ws/IWebservice/addApplicantRequest" message="tns:addApplicant" />
+      <output wsam:Action="http://ws/IWebservice/addApplicantResponse" message="tns:addApplicantResponse" />
+      <fault wsam:Action="http://ws/IWebservice/addApplicant/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="editProfile">
+      <input wsam:Action="http://ws/IWebservice/editProfileRequest" message="tns:editProfile" />
+      <output wsam:Action="http://ws/IWebservice/editProfileResponse" message="tns:editProfileResponse" />
+      <fault wsam:Action="http://ws/IWebservice/editProfile/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/editProfile/Fault/InvalidFormException" name="InvalidFormException" message="tns:InvalidFormException" />
+      <fault wsam:Action="http://ws/IWebservice/editProfile/Fault/ExpiredSession" name="ExpiredSession" message="tns:ExpiredSession" />
+    </operation>
+    <operation name="createProfile">
+      <input wsam:Action="http://ws/IWebservice/createProfileRequest" message="tns:createProfile" />
+      <output wsam:Action="http://ws/IWebservice/createProfileResponse" message="tns:createProfileResponse" />
+      <fault wsam:Action="http://ws/IWebservice/createProfile/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/createProfile/Fault/UserNotFound" name="UserNotFound" message="tns:UserNotFound" />
+      <fault wsam:Action="http://ws/IWebservice/createProfile/Fault/InvalidFormException" name="InvalidFormException" message="tns:InvalidFormException" />
+      <fault wsam:Action="http://ws/IWebservice/createProfile/Fault/ExpiredSession" name="ExpiredSession" message="tns:ExpiredSession" />
+    </operation>
+    <operation name="getMyServiceOffers">
+      <input wsam:Action="http://ws/IWebservice/getMyServiceOffersRequest" message="tns:getMyServiceOffers" />
+      <output wsam:Action="http://ws/IWebservice/getMyServiceOffersResponse" message="tns:getMyServiceOffersResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getMyServiceOffers/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getMyServiceOffers/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="getServiceOffer">
+      <input wsam:Action="http://ws/IWebservice/getServiceOfferRequest" message="tns:getServiceOffer" />
+      <output wsam:Action="http://ws/IWebservice/getServiceOfferResponse" message="tns:getServiceOfferResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceOffer/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceOffer/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="getCounties">
+      <input wsam:Action="http://ws/IWebservice/getCountiesRequest" message="tns:getCounties" />
+      <output wsam:Action="http://ws/IWebservice/getCountiesResponse" message="tns:getCountiesResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getCounties/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="getServiceRequest">
+      <input wsam:Action="http://ws/IWebservice/getServiceRequestRequest" message="tns:getServiceRequest" />
+      <output wsam:Action="http://ws/IWebservice/getServiceRequestResponse" message="tns:getServiceRequestResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceRequest/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceRequest/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="deleteRequest">
+      <input wsam:Action="http://ws/IWebservice/deleteRequestRequest" message="tns:deleteRequest" />
+      <output wsam:Action="http://ws/IWebservice/deleteRequestResponse" message="tns:deleteRequestResponse" />
+      <fault wsam:Action="http://ws/IWebservice/deleteRequest/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="getServiceOffersNF">
+      <input wsam:Action="http://ws/IWebservice/getServiceOffersNFRequest" message="tns:getServiceOffersNF" />
+      <output wsam:Action="http://ws/IWebservice/getServiceOffersNFResponse" message="tns:getServiceOffersNFResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceOffersNF/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceOffersNF/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="postOffer">
+      <input wsam:Action="http://ws/IWebservice/postOfferRequest" message="tns:postOffer" />
+      <output wsam:Action="http://ws/IWebservice/postOfferResponse" message="tns:postOfferResponse" />
+      <fault wsam:Action="http://ws/IWebservice/postOffer/Fault/ExpiredSession" name="ExpiredSession" message="tns:ExpiredSession" />
+      <fault wsam:Action="http://ws/IWebservice/postOffer/Fault/InvalidFormException" name="InvalidFormException" message="tns:InvalidFormException" />
+      <fault wsam:Action="http://ws/IWebservice/postOffer/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="postRequest">
+      <input wsam:Action="http://ws/IWebservice/postRequestRequest" message="tns:postRequest" />
+      <output wsam:Action="http://ws/IWebservice/postRequestResponse" message="tns:postRequestResponse" />
+      <fault wsam:Action="http://ws/IWebservice/postRequest/Fault/ExpiredSession" name="ExpiredSession" message="tns:ExpiredSession" />
+      <fault wsam:Action="http://ws/IWebservice/postRequest/Fault/InvalidFormException" name="InvalidFormException" message="tns:InvalidFormException" />
+      <fault wsam:Action="http://ws/IWebservice/postRequest/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="deleteApplicant">
+      <input wsam:Action="http://ws/IWebservice/deleteApplicantRequest" message="tns:deleteApplicant" />
+      <output wsam:Action="http://ws/IWebservice/deleteApplicantResponse" message="tns:deleteApplicantResponse" />
+      <fault wsam:Action="http://ws/IWebservice/deleteApplicant/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="getProfile">
+      <input wsam:Action="http://ws/IWebservice/getProfileRequest" message="tns:getProfile" />
+      <output wsam:Action="http://ws/IWebservice/getProfileResponse" message="tns:getProfileResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getProfile/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getProfile/Fault/ExpiredSession" name="ExpiredSession" message="tns:ExpiredSession" />
+    </operation>
+    <operation name="getCategories">
+      <input wsam:Action="http://ws/IWebservice/getCategoriesRequest" message="tns:getCategories" />
+      <output wsam:Action="http://ws/IWebservice/getCategoriesResponse" message="tns:getCategoriesResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getCategories/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+    </operation>
+    <operation name="getApplicants">
+      <input wsam:Action="http://ws/IWebservice/getApplicantsRequest" message="tns:getApplicants" />
+      <output wsam:Action="http://ws/IWebservice/getApplicantsResponse" message="tns:getApplicantsResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getApplicants/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getApplicants/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="getServiceRequestsNF">
+      <input wsam:Action="http://ws/IWebservice/getServiceRequestsNFRequest" message="tns:getServiceRequestsNF" />
+      <output wsam:Action="http://ws/IWebservice/getServiceRequestsNFResponse" message="tns:getServiceRequestsNFResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceRequestsNF/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getServiceRequestsNF/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="getOffersIAppliedFor">
+      <input wsam:Action="http://ws/IWebservice/getOffersIAppliedForRequest" message="tns:getOffersIAppliedFor" />
+      <output wsam:Action="http://ws/IWebservice/getOffersIAppliedForResponse" message="tns:getOffersIAppliedForResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getOffersIAppliedFor/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getOffersIAppliedFor/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+    <operation name="getMyServiceRequests">
+      <input wsam:Action="http://ws/IWebservice/getMyServiceRequestsRequest" message="tns:getMyServiceRequests" />
+      <output wsam:Action="http://ws/IWebservice/getMyServiceRequestsResponse" message="tns:getMyServiceRequestsResponse" />
+      <fault wsam:Action="http://ws/IWebservice/getMyServiceRequests/Fault/SQLException" name="SQLException" message="tns:SQLException" />
+      <fault wsam:Action="http://ws/IWebservice/getMyServiceRequests/Fault/EmptyListException" name="EmptyListException" message="tns:EmptyListException" />
+    </operation>
+  </portType>
+  <binding name="MyWebServicePortBinding" type="tns:IWebservice">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="signUp">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="InvalidFormException">
+        <soap12:fault use="literal" name="InvalidFormException" namespace="" />
+      </fault>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="NotBoundException">
+        <soap12:fault use="literal" name="NotBoundException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="logIn">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="UserNotFound">
+        <soap12:fault use="literal" name="UserNotFound" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteOffer">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="addApplicant">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="editProfile">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="InvalidFormException">
+        <soap12:fault use="literal" name="InvalidFormException" namespace="" />
+      </fault>
+      <fault name="ExpiredSession">
+        <soap12:fault use="literal" name="ExpiredSession" namespace="" />
+      </fault>
+    </operation>
+    <operation name="createProfile">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="UserNotFound">
+        <soap12:fault use="literal" name="UserNotFound" namespace="" />
+      </fault>
+      <fault name="InvalidFormException">
+        <soap12:fault use="literal" name="InvalidFormException" namespace="" />
+      </fault>
+      <fault name="ExpiredSession">
+        <soap12:fault use="literal" name="ExpiredSession" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMyServiceOffers">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getServiceOffer">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getCounties">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getServiceRequest">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteRequest">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getServiceOffersNF">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="postOffer">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="ExpiredSession">
+        <soap12:fault use="literal" name="ExpiredSession" namespace="" />
+      </fault>
+      <fault name="InvalidFormException">
+        <soap12:fault use="literal" name="InvalidFormException" namespace="" />
+      </fault>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="postRequest">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="ExpiredSession">
+        <soap12:fault use="literal" name="ExpiredSession" namespace="" />
+      </fault>
+      <fault name="InvalidFormException">
+        <soap12:fault use="literal" name="InvalidFormException" namespace="" />
+      </fault>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteApplicant">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getProfile">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="ExpiredSession">
+        <soap12:fault use="literal" name="ExpiredSession" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getCategories">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getApplicants">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getServiceRequestsNF">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getOffersIAppliedFor">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="getMyServiceRequests">
+      <soap12:operation soapAction="" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+      <fault name="SQLException">
+        <soap12:fault use="literal" name="SQLException" namespace="" />
+      </fault>
+      <fault name="EmptyListException">
+        <soap12:fault use="literal" name="EmptyListException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="MyWebServiceService">
+    <port name="MyWebServicePort" binding="tns:MyWebServicePortBinding">
+      <soap12:address location="http://10.152.218.130:8080/JaxWsExample/service" />
+    </port>
+  </service>
+</definitions>

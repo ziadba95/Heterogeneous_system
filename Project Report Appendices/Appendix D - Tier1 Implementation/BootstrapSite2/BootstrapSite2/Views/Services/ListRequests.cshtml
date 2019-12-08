@@ -1,0 +1,58 @@
+﻿@model List<BootstrapSite2.Tier2.serviceRequest>
+
+@{
+    ViewBag.Title = "ListRequests";
+}
+<h2>Service Requests</h2>
+
+
+@using (Html.BeginForm("ListORequests", "Services"))
+{
+    @Html.AntiForgeryToken()
+    <div class="text-danger">@ViewBag.errorMessage</div>
+    <table class="table">
+        <tr>
+            <th>
+                Service Title
+            </th>
+            <th>
+                Service Category
+            </th>
+            <th>
+                Description
+            </th>
+
+            <th>
+                Posted By
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.whoPosted)
+                </td>
+                <td>
+                    @Html.ActionLink("Contact", "Chat", new { id = item.id }) |
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

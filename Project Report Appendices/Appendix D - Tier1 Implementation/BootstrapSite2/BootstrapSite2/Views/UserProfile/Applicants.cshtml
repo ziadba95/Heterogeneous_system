@@ -1,0 +1,49 @@
+﻿@model List<BootstrapSite2.Tier2.applicant>
+
+@{
+    ViewBag.Title = "Applicants";
+}
+
+
+<h2>List Of Applicants</h2>
+
+
+@using (Html.BeginForm("Applicants", "UserProfile"))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            
+            <th>
+                Description
+            </th>
+            <th>
+                Name
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.ActionLink("Contact", "ContactApplicant", new { id=item.cpr}) |
+                    @Html.ActionLink("Employ", "EmployAndPay", new {  id=item.cpr }) |
+                  
+                    @Html.ActionLink("Delete", "DeleteApplicant", new {  id=item.cpr  })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

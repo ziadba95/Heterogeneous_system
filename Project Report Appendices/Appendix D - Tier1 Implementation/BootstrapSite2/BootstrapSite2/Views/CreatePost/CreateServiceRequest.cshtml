@@ -1,0 +1,73 @@
+﻿@model BootstrapSite2.Models.CreateServiceRequest
+
+@{
+    ViewBag.Title = "Make a service Request";
+}
+
+@using (Html.BeginForm("SubmitServiceRequest", "CreatePost"))
+{@Html.AntiForgeryToken()
+<div class="text-danger">@ViewBag.errorMessage</div>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Service Request
+
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li class="active">Service Request</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <h4>CreateServiceRequest</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ServiceTitle)
+                @Html.ValidationMessageFor(model => model.ServiceTitle)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceCategory, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ServiceCategory, new SelectList(ViewBag.Categories, "Select Category"))
+                @Html.ValidationMessageFor(model => model.ServiceCategory)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceDecs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ServiceDecs)
+                @Html.ValidationMessageFor(model => model.ServiceDecs)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+</div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>

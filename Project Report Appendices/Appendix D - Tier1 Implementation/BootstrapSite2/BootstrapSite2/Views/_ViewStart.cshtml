@@ -1,0 +1,22 @@
+﻿@{@*string CurrentUser = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"]);
+    dynamic Layout;
+    switch (CurrentUser)
+    {
+        case "User":
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+        default: Layout = "~/Views/Shared/_LayoutPage.cshtml";
+            break;
+    }*@
+
+    if(Session["user"] == null)
+    {
+        Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+    }
+    else
+    {<h2>Welcome @Session["name"].ToString()</h2>
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}

@@ -1,0 +1,105 @@
+﻿@model BootstrapSite2.Tier2.user
+@{
+    ViewBag.Title = "View";
+}
+
+
+<h2>My Profile Details</h2>
+
+
+@using (Html.BeginForm("SubmitNewInfo", "UserProfile"))
+{@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+   
+    <hr />
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.fName, "First Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.fName, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.fName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.lName, "Last Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.lName, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.lName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cPR, "CPR Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.cPR, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.cPR)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.city, "County", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.city, new SelectList(ViewBag.Counties, "Select County"))
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.description, "Description", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.password, "Change Password", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.vPassword, "Verify Password", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.vPassword)
+            @Html.ValidationMessageFor(model => model.vPassword)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.phone, "Phone Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
